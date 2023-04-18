@@ -17,7 +17,7 @@ class SprintsController < ApplicationController
   def create
     @sprint = Sprint.new(sprint_params)
 
-    if @sprint.save
+    unless @sprint.save
       render json: @sprint.errors, status: :unprocessable_entity
     end
   end
@@ -25,7 +25,7 @@ class SprintsController < ApplicationController
   # PATCH/PUT /sprints/1
   # PATCH/PUT /sprints/1.json
   def update
-    if @sprint.update(sprint_params)
+    unless @sprint.update(sprint_params)
       render json: @sprint.errors, status: :unprocessable_entity
     end
   end
@@ -44,6 +44,6 @@ class SprintsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sprint_params
-      params.permit(:name, :start_at, :end_at, :is_archived)
+      params.except(:format, :sprint).permit(:name, :start_at, :end_at, :is_archived)
     end
 end
