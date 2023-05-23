@@ -76,6 +76,11 @@ GEM
       kaminari (>= 1.0)
       sassc-rails (~> 2.1)
       selectize-rails (~> 0.6)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
+    annotate_gem (0.0.14)
+      bundler (>= 1.1)
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -204,6 +209,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    spring (4.1.1)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -245,6 +251,8 @@ PLATFORMS
 
 DEPENDENCIES
   administrate
+  annotate
+  annotate_gem
   bootsnap
   capybara
   debug
@@ -253,6 +261,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
   selenium-webdriver
+  spring
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
