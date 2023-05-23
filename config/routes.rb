@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   defaults format: :json do
-    resources :sprints
+    resources :sprints do
+      resources :swimlanes, only: %w[create]
+    end
   end
 end
