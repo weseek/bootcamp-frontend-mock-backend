@@ -19,6 +19,7 @@
 #
 class Swimlane < ApplicationRecord
   belongs_to :sprint, optional: true
+  has_many :tasks, dependent: :restrict_with_error
 
   validates :name, presence: true
   # gurantee that sprint exists, having ID: sprint_id

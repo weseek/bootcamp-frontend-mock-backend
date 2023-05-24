@@ -11,6 +11,8 @@
 #  updated_at  :datetime         not null
 #
 class Sprint < ApplicationRecord
+  has_many :swimlanes, dependent: :restrict_with_error
+
   validates :name, presence: true
   validates :start_at, presence: true
   validates :end_at, presence: true
