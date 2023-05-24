@@ -13,4 +13,6 @@
 #  index_users_on_username  (username) UNIQUE
 #
 class User < ApplicationRecord
+  validates :name, presence: true
+  validates :username, uniqueness: true, allow_nil: true
 end

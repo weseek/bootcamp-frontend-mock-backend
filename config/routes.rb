@@ -20,5 +20,6 @@ Rails.application.routes.draw do
       resources :tasks, only: %w[create]
     end
     resources :tasks, only: %w[index show update destroy]
+    resources :users
   end
 end
