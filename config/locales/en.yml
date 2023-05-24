@@ -37,4 +37,8 @@ en:
         swimlane:
           attributes:
             sprint:
-              blank: is not found
+              blank: &not_found is not found
+        task:
+          attributes:
+            assignee:
+              blank: *not_found
