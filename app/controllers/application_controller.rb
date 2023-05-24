@@ -9,7 +9,7 @@ class ApplicationController < ActionController::API
   end
 
   def render_404
-    render json: {error: 'Bad request'}, status: :not_found
+    render json: {error: 'Not found'}, status: :not_found
   end
 
   def render_400(e)

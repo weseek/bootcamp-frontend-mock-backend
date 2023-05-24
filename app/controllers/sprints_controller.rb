@@ -18,17 +18,17 @@ class SprintsController < ApplicationController
     @sprint = Sprint.new(sprint_params)
 
     unless @sprint.save
-      render json: @sprint.errors, status: :unprocessable_entity
+      render json: {errors: @sprint.errors}, status: :unprocessable_entity
       return
     end
-    render :show
+    render :show, status: :created
   end
 
   # PATCH/PUT /sprints/1
   # PATCH/PUT /sprints/1.json
   def update
     unless @sprint.update(sprint_params)
-      render json: @sprint.errors, status: :unprocessable_entity
+      render json: {errors: @sprint.errors}, status: :unprocessable_entity
       return
     end
     render :show
