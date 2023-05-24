@@ -4,7 +4,7 @@ class SprintsController < ApplicationController
   # GET /sprints
   # GET /sprints.json
   def index
-    @sprints = Sprint.all
+    @sprints = Sprint.all.preload(:swimlanes)
   end
 
   # GET /sprints/1
