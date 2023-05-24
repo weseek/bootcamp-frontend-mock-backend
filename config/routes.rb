@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resources :sprints do
       resources :swimlanes, only: %w[create]
     end
-    resources :swimlanes
+    resources :swimlanes do
+      resources :tasks, only: %w[create]
+    end
+    resources :tasks, only: %w[index show update destroy]
   end
 end

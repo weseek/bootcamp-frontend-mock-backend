@@ -26,4 +26,6 @@ class Task < ApplicationRecord
   belongs_to :assignee, class_name: 'User', optional: true
 
   validates :status, inclusion: { in: ['new', 'in progress', 'resolved', 'feedback', 'rejected'] }
+  validates :name, presence: true
+  validates :assignee, presence: true, if: -> { assignee_id.present? }
 end
