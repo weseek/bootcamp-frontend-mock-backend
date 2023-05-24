@@ -21,5 +21,6 @@ class Swimlane < ApplicationRecord
   belongs_to :sprint, optional: true
 
   validates :name, presence: true
-  validates :sprint, present: true
+  # gurantee that sprint exists, having ID: sprint_id
+  validates :sprint, presence: true, if: -> { sprint_id.present? }
 end

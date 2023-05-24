@@ -1,2 +1,1 @@
-json.extract! swimlane, :id, :created_at, :updated_at
-json.url swimlane_url(swimlane, format: :json)
+json.extract! swimlane, :id, :name, :description, :sprint_id, :created_at, :updated_at

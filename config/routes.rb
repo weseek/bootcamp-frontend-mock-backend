@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     resources :sprints do
       resources :swimlanes, only: %w[create]
     end
+    resources :swimlanes
   end
 end

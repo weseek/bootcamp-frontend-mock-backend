@@ -17,27 +17,28 @@ class SwimlanesController < ApplicationController
   def create
     @swimlane = Swimlane.new(swimlane_params)
 
-    if @swimlane.save
-      render :show, status: :created, location: @swimlane
-    else
-      render json: @swimlane.errors, status: :unprocessable_entity
+    unless @swimlane.save
+      render json: {errors: @swimlane.errors}, status: :unprocessable_entity
+      return
     end
+    render :show, status: :created
   end
 
   # PATCH/PUT /swimlanes/1
   # PATCH/PUT /swimlanes/1.json
   def update
-    if @swimlane.update(swimlane_params)
-      render :show, status: :ok, location: @swimlane
-    else
-      render json: @swimlane.errors, status: :unprocessable_entity
+    unless @swimlane.update(swimlane_params)
+      render json: {errors: @swimlane.errors}, status: :unprocessable_entity
+      return
     end
+    render :show
   end
 
   # DELETE /swimlanes/1
   # DELETE /swimlanes/1.json
   def destroy
     @swimlane.destroy
+    render :show
   end
 
   private
@@ -48,6 +49,6 @@ class SwimlanesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def swimlane_params
-      params.fetch(:swimlane, {})
+      params.except(:format, :swimlane, :id).permit(:name, :description, :sprint_id)
     end
 end
