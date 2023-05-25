@@ -1,5 +1,5 @@
 class SwimlanesController < ApplicationController
-  before_action :set_swimlane, only: %i[ show update destroy ]
+  before_action :set_swimlane, only: %i[ update destroy ]
 
   # GET /swimlanes
   # GET /swimlanes.json
@@ -10,6 +10,7 @@ class SwimlanesController < ApplicationController
   # GET /swimlanes/1
   # GET /swimlanes/1.json
   def show
+    @swimlane = Swimlane.preload(:tasks).find(params[:id])
   end
 
   # POST /swimlanes
