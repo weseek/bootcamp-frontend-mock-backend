@@ -42,7 +42,10 @@ class SprintsController < ApplicationController
   # DELETE /sprints/1
   # DELETE /sprints/1.json
   def destroy
-    @sprint.destroy
+    unless @sprint.destroy
+      render json: {errors: @sprint.errors}, status: :unprocessable_entity
+      return
+    end
     render :show
   end
 

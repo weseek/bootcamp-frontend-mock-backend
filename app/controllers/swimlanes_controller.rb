@@ -37,7 +37,10 @@ class SwimlanesController < ApplicationController
   # DELETE /swimlanes/1
   # DELETE /swimlanes/1.json
   def destroy
-    @swimlane.destroy
+    unless @swimlane.destroy
+      render json: {errors: @swimlane.errors}, status: :unprocessable_entity
+      return
+    end
     render :show
   end
 

@@ -37,7 +37,10 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    @task.destroy
+    unless @task.destroy
+      render json: {errors: @task.errors}, status: :unprocessable_entity
+      return
+    end
     render :show
   end
 
