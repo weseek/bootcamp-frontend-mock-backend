@@ -5,6 +5,10 @@ class SprintsController < ApplicationController
   # GET /sprints.json
   def index
     @sprints = Sprint.all.preload(:swimlanes)
+    case params[:status]
+    when 'archived'
+      @sprints = @sprints.where(is_archived: true)
+    end
   end
 
   # GET /sprints/1
