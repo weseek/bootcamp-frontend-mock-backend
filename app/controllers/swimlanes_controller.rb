@@ -5,6 +5,9 @@ class SwimlanesController < ApplicationController
   # GET /swimlanes.json
   def index
     @swimlanes = Swimlane.all
+    if params.has_key?(:backlogs)
+      @swimlanes = @swimlanes.where(sprint_id: nil)
+    end
   end
 
   # GET /swimlanes/1
