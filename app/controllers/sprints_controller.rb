@@ -1,5 +1,5 @@
 class SprintsController < ApplicationController
-  before_action :set_sprint, only: %i[ show update destroy ]
+  before_action :set_sprint, only: %i[ update destroy ]
 
   # GET /sprints
   # GET /sprints.json
@@ -10,6 +10,7 @@ class SprintsController < ApplicationController
   # GET /sprints/1
   # GET /sprints/1.json
   def show
+    @sprint = Sprint.preload(swimlanes: :tasks).find(params[:id])
   end
 
   # POST /sprints
