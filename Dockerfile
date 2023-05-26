@@ -17,6 +17,8 @@ ENV RAILS_ENV production
 ENV RAILS_LOG_TO_STDOUT 1
 ENV RAILS_SERVE_STATIC_FILES 1
 
+# workaround this issue: https://github.com/rails/rails/issues/32947
+ARG SECRET_KEY_BASE hogehoge
 RUN bin/rails assets:precompile
 
 EXPOSE 3000
