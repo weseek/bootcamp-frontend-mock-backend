@@ -1,0 +1,12 @@
+.git
+.gitignore
+.devcontainer/
+.github/
+
+db/*.sqlite
+public/assets/*
+log/
+
+.bundle
+vendor/bundle
+node_modules/
